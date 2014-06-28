@@ -7,7 +7,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 1
 Title "Cosmoneer Jr Main Board"
-Date "28 jun 2014"
+Date "1 jul 2014"
 Rev "-"
 Comp "Cosmos Pioneering"
 Comment1 "Initial Schematic Design for Cosmoneer Junior"
@@ -649,7 +649,7 @@ F 3 "" H 7225 1625 60  0000 C CNN
 $EndComp
 Text Label 6825 1525 2    60   ~ 0
 PIEZO
-Text Label 6450 3875 0    60   ~ 0
+Text Label 6450 3925 0    60   ~ 0
 PIEZO
 Text Label 6450 3025 0    60   ~ 0
 I2C_SDA_5V
@@ -864,7 +864,7 @@ F 3 "" H 8625 5075 60  0000 C CNN
 	1    8525 5075
 	1    0    0    -1  
 $EndComp
-Text GLabel 6650 3975 2    60   Input ~ 0
+Text GLabel 6650 4025 2    60   Input ~ 0
 ENABLE
 $Comp
 L CONN_3 J5
@@ -932,7 +932,7 @@ F 3 "" H 3475 7150 60  0000 C CNN
 	1    3475 7150
 	1    0    0    -1  
 $EndComp
-Text Label 6450 3675 0    60   ~ 0
+Text Label 6450 3725 0    60   ~ 0
 INT
 Text Label 2075 6150 1    60   ~ 0
 INT
@@ -1416,9 +1416,9 @@ F 3 "~" H 4375 3025 60  0000 C CNN
 	1    4375 3025
 	-1   0    0    1   
 $EndComp
-Text Label 6450 3475 0    60   ~ 0
+Text Label 6450 3525 0    60   ~ 0
 RXI
-Text Label 6450 3575 0    60   ~ 0
+Text Label 6450 3625 0    60   ~ 0
 TXO
 Text Label 4550 4725 2    60   ~ 0
 GND
@@ -1610,11 +1610,11 @@ Text Label 6450 2725 0    60   ~ 0
 A1
 Text Label 6450 2625 0    60   ~ 0
 A0
-Text Label 6450 3775 0    60   ~ 0
+Text Label 6450 3825 0    60   ~ 0
 D3
-Text Label 6450 4075 0    60   ~ 0
+Text Label 6450 4125 0    60   ~ 0
 D6
-Text Label 6450 4175 0    60   ~ 0
+Text Label 6450 4225 0    60   ~ 0
 D7
 Text Label 6450 4575 0    60   ~ 0
 D9
@@ -1956,7 +1956,7 @@ Wire Wire Line
 Wire Wire Line
 	8025 4575 7600 4575
 Wire Wire Line
-	6450 3975 6650 3975
+	6450 4025 6650 4025
 Wire Wire Line
 	2275 7550 2525 7550
 Wire Wire Line

@@ -1,18 +1,8 @@
-update=6/27/2014 10:23:35 PM
+update=7/1/2014 2:44:09 AM
 version=1
-last_client=pcbnew
+last_client=eeschema
 [general]
 version=1
-[eeschema]
-version=1
-LibDir=
-NetFmtName=PcbnewAdvanced
-RptD_X=0
-RptD_Y=100
-RptLab=1
-LabSize=60
-[eeschema/libraries]
-LibName1=CosmoneerJr
 [cvpcb]
 version=1
 NetIExt=net
@@ -49,3 +39,13 @@ LibName7=libcms
 LibName8=led
 LibName9=w_logo
 LibName10=CosmoneerJr
+[eeschema]
+version=1
+LibDir=
+NetFmtName=PcbnewAdvanced
+RptD_X=0
+RptD_Y=100
+RptLab=1
+LabSize=60
+[eeschema/libraries]
+LibName1=CosmoneerJr
