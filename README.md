@@ -1,7 +1,7 @@
 #Cosmos Pioneering   -   Cosmoneer Junior#
 ==========================================
 
-The Cosmoneer Junior is a single-degree of Freedom Spacecraft simulator.  This design is the main control board to manage the attitude in a single axis via PWM control through a server and gyro motor, commonly known as a Control Moment Gyro.=
+The Cosmoneer Junior is a single-degree of Freedom Spacecraft simulator.  This design is the main control board to manage the attitude in a single axis via PWM control through a server and gyro motor, commonly known as a Control Moment Gyro.
 
 ----------
 
@@ -30,4 +30,4 @@ This folder contains electronic circuit source files (for [KiCad EDA Software Su
 
 # Disclaimer #
 
-THE CONTENT OF THIS FOLDER IS PROVIDED "AS IS" AND "WITH ALL FAULTS". Cosmos Pioneering&reg; DISCLAIMS ALL OTHER WARRANTIES, EXPRESS OR IMPLIED, REGARDING PRODUCTS, INCLUDING BUT NOT LIMITED TO, ANY IMPLIED WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.
+THE CONTENT OF THIS FOLDER IS PROVIDED "AS IS" AND "WITH ALL FAULTS". Cosmos Pioneering DISCLAIMS ALL OTHER WARRANTIES, EXPRESS OR IMPLIED, REGARDING PRODUCTS, INCLUDING BUT NOT LIMITED TO, ANY IMPLIED WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.
