@@ -7,7 +7,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 1
 Title "Cosmoneer Jr Main Board"
-Date "1 jul 2014"
+Date "13 jul 2014"
 Rev "-"
 Comp "Cosmos Pioneering"
 Comment1 "Initial Schematic Design for Cosmoneer Junior"
@@ -528,9 +528,9 @@ F 3 "~" H 9575 4925 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 Text Label 8025 4875 2    60   ~ 0
-IRTX
+A1
 Text Label 8025 4975 2    60   ~ 0
-IRRX
+A0
 Text Label 8025 4675 2    60   ~ 0
 RESET
 $Comp

@@ -1,6 +1,6 @@
-update=7/1/2014 2:44:09 AM
+update=11/14/2014 4:28:03 PM
 version=1
-last_client=eeschema
+last_client=pcbnew
 [general]
 version=1
 [cvpcb]
@@ -8,14 +8,24 @@ version=1
 NetIExt=net
 [cvpcb/libraries]
 EquName1=devcms
+[eeschema]
+version=1
+LibDir=
+NetFmtName=PcbnewAdvanced
+RptD_X=0
+RptD_Y=100
+RptLab=1
+LabSize=60
+[eeschema/libraries]
+LibName1=CosmoneerJr
 [pcbnew]
 version=1
 LastNetListRead=CosmoneerJr.net
 UseCmpFile=1
-PadDrill=2.300000000000
-PadDrillOvalY=2.300000000000
-PadSizeH=3.600000000000
-PadSizeV=3.600000000000
+PadDrill=1.020000000000
+PadDrillOvalY=1.020000000000
+PadSizeH=1.700000000000
+PadSizeV=1.700000000000
 PcbTextSizeV=1.500000000000
 PcbTextSizeH=1.500000000000
 PcbTextThickness=0.300000000000
@@ -39,13 +49,3 @@ LibName7=libcms
 LibName8=led
 LibName9=w_logo
 LibName10=CosmoneerJr
-[eeschema]
-version=1
-LibDir=
-NetFmtName=PcbnewAdvanced
-RptD_X=0
-RptD_Y=100
-RptLab=1
-LabSize=60
-[eeschema/libraries]
-LibName1=CosmoneerJr
