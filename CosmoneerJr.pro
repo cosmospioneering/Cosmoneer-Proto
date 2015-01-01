@@ -1,8 +1,6 @@
-update=11/14/2014 4:28:03 PM
+update=1/1/2015 12:51:27 PM
 version=1
-last_client=pcbnew
-[general]
-version=1
+last_client=kicad
 [cvpcb]
 version=1
 NetIExt=net
@@ -49,3 +47,5 @@ LibName7=libcms
 LibName8=led
 LibName9=w_logo
 LibName10=CosmoneerJr
+[general]
+version=1
