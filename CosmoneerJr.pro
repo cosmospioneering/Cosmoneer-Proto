@@ -1,6 +1,6 @@
-update=1/1/2015 12:51:27 PM
+update=2/19/2015 3:51:42 AM
 version=1
-last_client=kicad
+last_client=pcbnew
 [cvpcb]
 version=1
 NetIExt=net
@@ -16,21 +16,23 @@ RptLab=1
 LabSize=60
 [eeschema/libraries]
 LibName1=CosmoneerJr
+[general]
+version=1
 [pcbnew]
 version=1
 LastNetListRead=CosmoneerJr.net
 UseCmpFile=1
-PadDrill=1.020000000000
-PadDrillOvalY=1.020000000000
-PadSizeH=1.700000000000
-PadSizeV=1.700000000000
+PadDrill=2.300000000000
+PadDrillOvalY=2.300000000000
+PadSizeH=3.000000000000
+PadSizeV=3.000000000000
 PcbTextSizeV=1.500000000000
 PcbTextSizeH=1.500000000000
 PcbTextThickness=0.300000000000
 ModuleTextSizeV=1.000000000000
 ModuleTextSizeH=1.000000000000
 ModuleTextSizeThickness=0.150000000000
-SolderMaskClearance=0.000000000000
+SolderMaskClearance=0.152000000000
 SolderMaskMinWidth=0.000000000000
 DrawSegmentWidth=0.200000000000
 BoardOutlineThickness=0.100000000000
@@ -47,5 +49,4 @@ LibName7=libcms
 LibName8=led
 LibName9=w_logo
 LibName10=CosmoneerJr
-[general]
-version=1
+LibName11=CosmosLogo1
