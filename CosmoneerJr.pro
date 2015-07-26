@@ -1,21 +1,11 @@
-update=2/19/2015 3:51:42 AM
+update=7/25/2015 11:22:43 PM
 version=1
-last_client=pcbnew
+last_client=eeschema
 [cvpcb]
 version=1
 NetIExt=net
 [cvpcb/libraries]
 EquName1=devcms
-[eeschema]
-version=1
-LibDir=
-NetFmtName=PcbnewAdvanced
-RptD_X=0
-RptD_Y=100
-RptLab=1
-LabSize=60
-[eeschema/libraries]
-LibName1=CosmoneerJr
 [general]
 version=1
 [pcbnew]
@@ -50,3 +40,14 @@ LibName8=led
 LibName9=w_logo
 LibName10=CosmoneerJr
 LibName11=CosmosLogo1
+[eeschema]
+version=1
+LibDir=
+NetFmtName=PcbnewAdvanced
+RptD_X=0
+RptD_Y=100
+RptLab=1
+LabSize=60
+[eeschema/libraries]
+LibName1=CosmoneerJr
+LibName2=converted/diode

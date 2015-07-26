@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by CvPcb (2013-07-07 BZR 4022)-stable date = 2/12/2015 4:22:41 AM
+Cmp-Mod V01 Created by CvPcb (2013-07-07 BZR 4022)-stable date = 7/26/2015 10:29:50 AM
 
 BeginCmp
 TimeStamp = /53A1C52D;
@@ -38,42 +38,14 @@ EndCmp
 BeginCmp
 TimeStamp = /539FC14E;
 Reference = C6;
-ValeurCmp = 22pf;
+ValeurCmp = 27pf;
 IdModule  = SM0805;
 EndCmp
 
 BeginCmp
 TimeStamp = /539D0EA2;
 Reference = C7;
-ValeurCmp = 22pf;
-IdModule  = SM0805;
-EndCmp
-
-BeginCmp
-TimeStamp = /53A180CF;
-Reference = C8;
-ValeurCmp = 4.7uf;
-IdModule  = SM0805;
-EndCmp
-
-BeginCmp
-TimeStamp = /53A180C9;
-Reference = C9;
-ValeurCmp = 0.22uf;
-IdModule  = SM0805;
-EndCmp
-
-BeginCmp
-TimeStamp = /53A11510;
-Reference = C10;
-ValeurCmp = 0.1uf;
-IdModule  = SM0805;
-EndCmp
-
-BeginCmp
-TimeStamp = /53A1150A;
-Reference = C11;
-ValeurCmp = 0.1uf;
+ValeurCmp = 27pf;
 IdModule  = SM0805;
 EndCmp
 
@@ -87,14 +59,14 @@ EndCmp
 BeginCmp
 TimeStamp = /539E6B89;
 Reference = C13;
-ValeurCmp = 22pf;
+ValeurCmp = 15pf;
 IdModule  = SM0805;
 EndCmp
 
 BeginCmp
 TimeStamp = /539E6B74;
 Reference = C14;
-ValeurCmp = 22pf;
+ValeurCmp = 15pf;
 IdModule  = SM0805;
 EndCmp
 
@@ -218,6 +190,20 @@ IdModule  = AB2_0805_LED_RED;
 EndCmp
 
 BeginCmp
+TimeStamp = /55B460B9;
+Reference = D11;
+ValeurCmp = 1N4001;
+IdModule  = DO-214AC(SMA);
+EndCmp
+
+BeginCmp
+TimeStamp = /55B466AF;
+Reference = F1;
+ValeurCmp = FUSE;
+IdModule  = SM1812;
+EndCmp
+
+BeginCmp
 TimeStamp = /539D1A03;
 Reference = J1;
 ValeurCmp = Header;
@@ -323,13 +309,6 @@ IdModule  = SIL-2;
 EndCmp
 
 BeginCmp
-TimeStamp = /53A298AA;
-Reference = P5;
-ValeurCmp = Header;
-IdModule  = SIL-2;
-EndCmp
-
-BeginCmp
 TimeStamp = /53A29892;
 Reference = P6;
 ValeurCmp = Header;
@@ -393,34 +372,6 @@ IdModule  = SM0805;
 EndCmp
 
 BeginCmp
-TimeStamp = /53A112B6;
-Reference = R20;
-ValeurCmp = 10K;
-IdModule  = SM0805;
-EndCmp
-
-BeginCmp
-TimeStamp = /53A112BC;
-Reference = R21;
-ValeurCmp = 10K;
-IdModule  = SM0805;
-EndCmp
-
-BeginCmp
-TimeStamp = /53A11296;
-Reference = R22;
-ValeurCmp = 10K;
-IdModule  = SM0805;
-EndCmp
-
-BeginCmp
-TimeStamp = /53A1129C;
-Reference = R23;
-ValeurCmp = 10K;
-IdModule  = SM0805;
-EndCmp
-
-BeginCmp
 TimeStamp = /53A02E38;
 Reference = R24;
 ValeurCmp = 10K;
@@ -430,36 +381,36 @@ EndCmp
 BeginCmp
 TimeStamp = /53A19B66;
 Reference = R25;
-ValeurCmp = 220 Ohm;
-IdModule  = r_CN2A4;
+ValeurCmp = 330 Ohm;
+IdModule  = r_cat16-4;
 EndCmp
 
 BeginCmp
 TimeStamp = /53A1C084;
 Reference = R26;
 ValeurCmp = 330 Ohm;
-IdModule  = r_CN2A4;
+IdModule  = r_cat16-4;
 EndCmp
 
 BeginCmp
 TimeStamp = /53A1C0DC;
 Reference = R27;
 ValeurCmp = 330 Ohm;
-IdModule  = r_CN2A4;
+IdModule  = r_cat16-4;
 EndCmp
 
 BeginCmp
 TimeStamp = /54DC7C4A;
 Reference = R28;
-ValeurCmp = 220 Ohm;
-IdModule  = r_CN2A4;
+ValeurCmp = 330 Ohm;
+IdModule  = r_cat16-4;
 EndCmp
 
 BeginCmp
 TimeStamp = /539D2A8A;
 Reference = SW1;
 ValeurCmp = SW_PUSH_SMALL;
-IdModule  = SW_PUSH_SMD;
+IdModule  = smd_push2;
 EndCmp
 
 BeginCmp
@@ -484,20 +435,6 @@ IdModule  = vishay_TFBS4711;
 EndCmp
 
 BeginCmp
-TimeStamp = /539D2538;
-Reference = U4;
-ValeurCmp = PCA9306;
-IdModule  = pca9306dcu;
-EndCmp
-
-BeginCmp
-TimeStamp = /539E7278;
-Reference = U5;
-ValeurCmp = HMC5883;
-IdModule  = HMC5883L_bigpads;
-EndCmp
-
-BeginCmp
 TimeStamp = /539D0CAC;
 Reference = U7;
 ValeurCmp = MIC5205;
@@ -516,6 +453,13 @@ TimeStamp = /539D2529;
 Reference = U9;
 ValeurCmp = PCA9685;
 IdModule  = PCA9685;
+EndCmp
+
+BeginCmp
+TimeStamp = /55AAD451;
+Reference = U10;
+ValeurCmp = GY-271;
+IdModule  = ;
 EndCmp
 
 BeginCmp

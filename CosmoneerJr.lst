@@ -1,0 +1,144 @@
+eeschema (2013-07-07 BZR 4022)-stable  >> Creation date: 7/26/2015 10:29:17 AM
+#Cmp ( order = Reference )
+| C1         10uf        
+| C2         4.7uf       
+| C3         0.1uf       
+| C4         4.7uf       
+| C5         0.1uf       
+| C6         27pf        
+| C7         27pf        
+| C12        0.1uf       
+| C13        15pf        
+| C14        15pf        
+| C15        0.1uf       
+| C16        0.1uf       
+| C17        0.1uf       
+| C18        10uf        
+| C19        10uf        
+| C20        10uf        
+| C21        10uf        
+| D1         LED         
+| D2         LED         
+| D3         LED         
+| D4         LED         
+| D5         LED         
+| D6         LED         
+| D7         LED         
+| D8         LED         
+| D9         LED         
+| D10        LED         
+| D11        1N4001      
+| F1         FUSE        
+| J1         Header      
+| J5         Header      
+| J9         Header      
+| J13        Header      
+| J17        Header      
+| J18        Header      
+| JP1        JUMPER3     
+| JP2        JUMPER3     
+| JP3        JUMPER3     
+| JP4        JUMPER3     
+| JP5        JUMPER3     
+| P1         .1" Header  
+| P2         Header      
+| P3         SM04B-SRSS-TB
+| P4         Header      
+| P6         Header      
+| P7         CONN_2      
+| P8         CONN_2      
+| PZ1        PIEZO Speaker
+| R7         10K         
+| R16        47 Ohm      
+| R17        0 Ohm       
+| R18        1K          
+| R19        1K          
+| R24        10K         
+| R25        330 Ohm     
+| R26        330 Ohm     
+| R27        330 Ohm     
+| R28        330 Ohm     
+| SW1        SW_PUSH_SMALL
+| U1         ATMEGA328P-AU
+| U2         MCP2120-SL  
+| U3         TFBS4711    
+| U7         MIC5205     
+| U8         AMS1117     
+| U9         PCA9685     
+| U10        GY-271      
+| X1         7.3728Mhz   
+| X2         16.000Mhz   
+#End Cmp
+
+#Cmp ( order = Value )
+| 15pf         C13       
+| 15pf         C14       
+| 27pf         C6        
+| 27pf         C7        
+| 0.1uf        C3        
+| 0.1uf        C5        
+| 0.1uf        C12       
+| 0.1uf        C15       
+| 0.1uf        C16       
+| 0.1uf        C17       
+| 4.7uf        C2        
+| 4.7uf        C4        
+| 10uf         C1        
+| 10uf         C18       
+| 10uf         C19       
+| 10uf         C20       
+| 10uf         C21       
+| 1N4001       D11       
+| LED          D1        
+| LED          D2        
+| LED          D3        
+| LED          D4        
+| LED          D5        
+| LED          D6        
+| LED          D7        
+| LED          D8        
+| LED          D9        
+| LED          D10       
+| FUSE         F1        
+| Header       J1        
+| Header       J5        
+| Header       J9        
+| Header       J13       
+| Header       J17       
+| Header       J18       
+| JUMPER3      JP1       
+| JUMPER3      JP2       
+| JUMPER3      JP3       
+| JUMPER3      JP4       
+| JUMPER3      JP5       
+| .1" Header   P1        
+| Header       P2        
+| Header       P4        
+| Header       P6        
+| SM04B-SRSS-TB P3        
+| CONN_2       P7        
+| CONN_2       P8        
+| PIEZO Speaker PZ1       
+| 1K           R18       
+| 1K           R19       
+| 10K          R7        
+| 10K          R24       
+| 330 Ohm      R25       
+| 330 Ohm      R26       
+| 330 Ohm      R27       
+| 330 Ohm      R28       
+| 47 Ohm       R16       
+| 0 Ohm        R17       
+| SW_PUSH_SMALL SW1       
+| MCP2120-SL   U2        
+| AMS1117      U8        
+| PCA9685      U9        
+| GY-271       U10       
+| ATMEGA328P-AU U1        
+| TFBS4711     U3        
+| MIC5205      U7        
+| 7.3728Mhz    X1        
+| 16.000Mhz    X2        
+#End Cmp
+
+#End List
