@@ -1,0 +1,172 @@
+
+
+   ---- Transcoding 'C:\Users\Cosmoneer\Documents\GitHub\CosmoneerJr\fab\Support\IrDA-B.Mask.gbr' ----   Sun Sep 04 03:12:28 2016
+
+D11   --> D100
+D12   --> D101
+-----------------------------------------------------------------
+
+
+   ---- Transcoding 'C:\Users\Cosmoneer\Documents\GitHub\CosmoneerJr\fab\Support\IrDA-B.SilkS.gbr' ----   Sun Sep 04 03:12:28 2016
+
+D11   --> D102
+D12   --> D103
+-----------------------------------------------------------------
+
+
+   ---- Transcoding 'C:\Users\Cosmoneer\Documents\GitHub\CosmoneerJr\fab\Support\IrDA-drl_map.gbr' ----   Sun Sep 04 03:12:28 2016
+
+D11   --> D104
+D12   --> D105
+D13   --> D106
+-----------------------------------------------------------------
+
+
+   ---- Transcoding 'C:\Users\Cosmoneer\Documents\GitHub\CosmoneerJr\fab\Support\IrDA-Dwgs.User.gbr' ----   Sun Sep 04 03:12:28 2016
+
+D11   --> D107
+-----------------------------------------------------------------
+
+
+   ---- Transcoding 'C:\Users\Cosmoneer\Documents\GitHub\CosmoneerJr\fab\Support\IrDA-F.Cu.gbr' ----   Sun Sep 04 03:12:28 2016
+
+D11   --> D108
+D12   --> D109
+D13   --> D110
+D14   --> D111
+D15   --> D112
+-----------------------------------------------------------------
+
+
+   ---- Transcoding 'C:\Users\Cosmoneer\Documents\GitHub\CosmoneerJr\fab\Support\IrDA-F.Mask.gbr' ----   Sun Sep 04 03:12:28 2016
+
+D11   --> D113
+D12   --> D114
+D13   --> D115
+D14   --> D116
+D15   --> D117
+D16   --> D118
+D17   --> D119
+D18   --> D120
+D19   --> D121
+-----------------------------------------------------------------
+
+
+   ---- Transcoding 'C:\Users\Cosmoneer\Documents\GitHub\CosmoneerJr\fab\Support\IrDA-F.SilkS.gbr' ----   Sun Sep 04 03:12:28 2016
+
+D11   --> D122
+D12   --> D123
+D13   --> D124
+D14   --> D125
+D15   --> D126
+D16   --> D127
+D17   --> D128
+D18   --> D129
+D19   --> D130
+D20   --> D131
+D21   --> D132
+-----------------------------------------------------------------
+
+
+   ---- Transcoding 'C:\Users\Cosmoneer\Documents\GitHub\CosmoneerJr\fab\Support\SuperBurst-B.Cu.gbr' ----   Sun Sep 04 03:12:28 2016
+
+D11   --> D133
+D12   --> D134
+D13   --> D135
+D14   --> D136
+D15   --> D137
+D16   --> D138
+D17   --> D139
+D18   --> D140
+D19   --> D141
+D20   --> D142
+D21   --> D143
+-----------------------------------------------------------------
+
+
+   ---- Transcoding 'C:\Users\Cosmoneer\Documents\GitHub\CosmoneerJr\fab\Support\SuperBurst-B.Mask.gbr' ----   Sun Sep 04 03:12:28 2016
+
+D11   --> D144
+D12   --> D145
+D13   --> D146
+D14   --> D147
+D15   --> D148
+D16   --> D149
+D17   --> D150
+-----------------------------------------------------------------
+
+
+   ---- Transcoding 'C:\Users\Cosmoneer\Documents\GitHub\CosmoneerJr\fab\Support\SuperBurst-B.SilkS.gbr' ----   Sun Sep 04 03:12:28 2016
+
+D11   --> D151
+D12   --> D152
+D13   --> D153
+D14   --> D154
+D15   --> D155
+D16   --> D156
+D17   --> D157
+D18   --> D158
+-----------------------------------------------------------------
+
+
+   ---- Transcoding 'C:\Users\Cosmoneer\Documents\GitHub\CosmoneerJr\fab\Support\SuperBurst-drl_map.gbr' ----   Sun Sep 04 03:12:28 2016
+
+D11   --> D159
+D12   --> D160
+D13   --> D161
+-----------------------------------------------------------------
+
+
+   ---- Transcoding 'C:\Users\Cosmoneer\Documents\GitHub\CosmoneerJr\fab\Support\SuperBurst-Dwgs.User.gbr' ----   Sun Sep 04 03:12:28 2016
+
+D11   --> D162
+-----------------------------------------------------------------
+
+
+   ---- Transcoding 'C:\Users\Cosmoneer\Documents\GitHub\CosmoneerJr\fab\Support\SuperBurst-Edge.Cuts.gbr' ----   Sun Sep 04 03:12:28 2016
+
+D11   --> D163
+-----------------------------------------------------------------
+
+
+   ---- Transcoding 'C:\Users\Cosmoneer\Documents\GitHub\CosmoneerJr\fab\Support\SuperBurst-F.Cu.gbr' ----   Sun Sep 04 03:12:28 2016
+
+D11   --> D164
+D12   --> D165
+D13   --> D166
+D14   --> D167
+D15   --> D168
+D16   --> D169
+D17   --> D170
+D18   --> D171
+D19   --> D172
+D20   --> D173
+D21   --> D174
+-----------------------------------------------------------------
+
+
+   ---- Transcoding 'C:\Users\Cosmoneer\Documents\GitHub\CosmoneerJr\fab\Support\SuperBurst-F.Mask.gbr' ----   Sun Sep 04 03:12:28 2016
+
+D11   --> D175
+D12   --> D176
+D13   --> D177
+D14   --> D178
+D15   --> D179
+D16   --> D180
+D17   --> D181
+D18   --> D182
+-----------------------------------------------------------------
+
+
+   ---- Transcoding 'C:\Users\Cosmoneer\Documents\GitHub\CosmoneerJr\fab\Support\SuperBurst-F.SilkS.gbr' ----   Sun Sep 04 03:12:28 2016
+
+D11   --> D183
+D12   --> D184
+D13   --> D185
+D14   --> D186
+D15   --> D187
+D16   --> D188
+D17   --> D189
+D18   --> D190
+D19   --> D191
+-----------------------------------------------------------------
