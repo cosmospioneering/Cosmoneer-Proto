@@ -1,7 +1,7 @@
-#Cosmos Pioneering   -   Cosmoneer Junior#
+#Cosmos Pioneering   -   Cosmoneer Proto#
 ==========================================
 
-The Cosmoneer Junior is a single-degree of Freedom Spacecraft simulator.  This design is the main control board to manage the attitude in a single axis via PWM control through a server and gyro motor, commonly known as a Control Moment Gyro.
+The Cosmoneer Proto is a single-degree of Freedom Spacecraft simulator.  This design is the main control board to manage the attitude in a single axis via PWM control through a server and gyro motor, commonly known as a Control Moment Gyro.
 
 ----------
 
