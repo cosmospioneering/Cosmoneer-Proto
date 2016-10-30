@@ -17,7 +17,7 @@ This folder contains electronic circuit source files (for [KiCad EDA Software Su
 
 
 
-[![alt][2]][1] [![alt][4]][3]
+[![alt][2]][1] [![alt][4]][3] [![alt][6]][5]
 
 [1]: http://creativecommons.org/licenses/by-sa/4.0/
 [2]: http://i.creativecommons.org/l/by-sa/4.0/88x31.png (Creative Commons Attribution-ShareAlike 4.0 Unported License.)
@@ -25,6 +25,8 @@ This folder contains electronic circuit source files (for [KiCad EDA Software Su
 [3]: http://freedomdefined.org/OSHW
 [4]: http://www.oshwa.org/wp-content/uploads/2014/03/oshw-logo-antipixel.png
 
+[5]: https://opensource.org/licenses/GPL-3.0
+[6]: https://www.gnu.org/graphics/gplv3-88x31.png
 
 
 
