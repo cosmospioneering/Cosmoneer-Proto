@@ -11,7 +11,11 @@ This folder contains electronic circuit source files (for [KiCad EDA Software Su
 
 # LICENSE #
 
-*All files in this folder are licensed under the [Creative Commons Attribution-ShareAlike 4.0 Unported License](http://creativecommons.org/licenses/by-sa/4.0/) and the [Open Source Hardware (OSHW) Definition 1.0](http://freedomdefined.org/OSHW).*
+*This project is open source hardware as defined by the* [Open Source Hardware (OSHW) Definition 1.0](http://freedomdefined.org/OSHW)
+- Documentation under the following license:  [Creative Commons Attribution-ShareAlike 4.0 Unported License](http://creativecommons.org/licenses/by-sa/4.0/)
+- Source code is under the following license:  [GNU General Public License, version 3 (GPL-3.0)](https://opensource.org/licenses/GPL-3.0)
+
+
 
 [![alt][2]][1] [![alt][4]][3]
 
@@ -19,7 +23,7 @@ This folder contains electronic circuit source files (for [KiCad EDA Software Su
 [2]: http://i.creativecommons.org/l/by-sa/4.0/88x31.png (Creative Commons Attribution-ShareAlike 4.0 Unported License.)
 
 [3]: http://freedomdefined.org/OSHW
-[4]: http://ultimachine.com/sites/default/files/images/OpenHardwareLogo.thumbnail.png
+[4]: http://www.oshwa.org/wp-content/uploads/2014/03/oshw-logo-antipixel.png
 
 
 
