@@ -7,7 +7,14 @@ The Cosmoneer Proto is a single-degree of Freedom Spacecraft simulator.  This de
 
 # CONTENTS #
 
-This folder contains electronic circuit source files (for [KiCad EDA Software Suite](http://www.kicad-pcb.org/display/KICAD/KiCad+EDA+Software+Suite)) designed for the Cosmoneer Junior.
+This repository contains source files for the Cosmoneer Proto.  Here is a table of contents for the repository.
+
+- 3DModels: Rhino 3.0 models, with a sub folder containing Rhino output STL files
+- Arduino: Arduino code in two folders, with additional required libraries contained in a separate zip file.
+- Rev0-fab: Rev 0 PCB fabrication files (copper, mask, silk, drill, dwg)
+- SpecSheets: Manufacturing spec sheets for components used on the Cosmoneer Proto circuit board
+- fab: Rev 01 PCB fabrication files (copper, mask, silk, drill, dwg)
+- boards: [KiCAD](http://www.kicad-pcb.org/display/KICAD/KiCad+EDA+Software+Suite) PCB board files (CosmoneerProto, SuperBurst & Serial IrDa)
 
 # LICENSE #
 
