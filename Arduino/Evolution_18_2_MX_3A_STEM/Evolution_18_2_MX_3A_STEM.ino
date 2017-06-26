@@ -193,7 +193,7 @@ double targHeading = 90;
 int8_t valDirection = 0;
 int8_t dwellCount = 0;
 int8_t dwlTotalCount = 0;
-int8_t dwellTest = 5; // this is minimum number of times the maneuver test must pass before a position is considered "hit"
+int8_t dwellTest = 3; // this is minimum number of times the maneuver test must pass before a position is considered "hit"
 float heading=0;
 float turnRate=0;
 boolean valDirection2 = false;
@@ -203,7 +203,7 @@ boolean dirPassE = false;
 boolean dirPassW = false;
 double baseFoundHeading = -1;   //This is the base station heading value...  -1 is the unassigned default
 const double searchHeadingIncrement = 30; // This is how much we will increment the search angle every XX seconds
-const uint16_t maxListensBeforeHeadingChange = 10; // 1/10th of a second for each maneuver... 1 second for each increment
+const uint16_t maxListensBeforeHeadingChange = 100; // 1/10th of a second for each maneuver... 1 second for each increment
 int8_t listenCount = 0;
 double findTargetHeading = 0;   //This is the base station heading value...  -1 is the unassigned default
 boolean findTarget = false;
@@ -221,8 +221,7 @@ int posLast = 280;    // variable to store the servo position
 int posCenter = 280;    // variable to store the servo position 
 int posLeft = 460;    // variable to store the servo position 
 int posRight = 120;    // variable to store the servo position 
-int posDelay = 15;    // variable to store the servo position 
-
+int posDelay = 10;
 
 
 
@@ -313,7 +312,9 @@ void loop() {
 
 
   //Run the timer events
-  tmr.update();
+  //tmr.update();
+  CycleLEDs();
+  Maneuver();
 }
 
 
@@ -369,7 +370,7 @@ void setup() {
 
 
   //Set the LED timer event
-  tmr.every(100, CycleLEDs);
+  //tmr.every(100, CycleLEDs);
   //Set the Compass timer event
   //tmr.every(500, ReadCompass2);
   //Set the Maneuver timer event
@@ -377,7 +378,7 @@ void setup() {
   //Set the Sensor timer event
   //tmr.every(1000, readSensors);
   //
-  tmr.every(100, Maneuver);
+  //tmr.every(100, Maneuver);
 
 
 }
@@ -440,12 +441,12 @@ void initCompass(){
 
 
   initstatusbar();
-  mydisp.print("Init Compass Cal");
+  mydisp.print("Init Compass Tst");
   //
   CompassCalibrationCheck();
   //
   initstatusbar();
-  mydisp.print("Cal. Complete");
+  mydisp.print("Test Complete");
 }
 
 void initESC(){
@@ -504,27 +505,30 @@ void processIncomingIrDa(){
 
   if (content != "") {
     //mydisp.clearScreen(); //Clear screen
-    initstatusbar();
-    mydisp.print(content); 
-    LEDSetup = B00110111;
-    ShowLEDCount = 5;
-    delay(50);
+    //initstatusbar();
+    //mydisp.print(content); 
+    //LEDSetup = B00110111;
+    //ShowLEDCount = 5;
+    //delay(50);
     
     char content2[content.length()];
     content.toCharArray(content2, content.length());
     char *i;
     char* command = strtok_r(content2, "|",&i);
 
-    initstatusbar();
-    mydisp.print(command); 
-    delay(2000);
+    //initstatusbar();
+    //mydisp.print(command); 
+    //delay(2000);
 
     if (command == "T") {
+      LEDSetup = B00110111;
+      ShowLEDCount = 5;
+      delay(50);
       command = strtok_r(NULL,":",&i);
       command = strtok_r(NULL,":",&i);
       initstatusbar();
       mydisp.print(command); 
-      delay(2000);
+      //delay(2000);
       findTargetHeading = atof(command);
       findTarget = true;
     }
@@ -656,7 +660,7 @@ void CompassCalibrationCheck() {
 
 
   initstatusbar();
-  mydisp.print("Calibrating");
+  mydisp.print("Testing");
   //delay(1000); 
   for(uint16_t steps = 0; steps<10; steps++)     // steps goes from 0 to 10 
   {                                
@@ -695,6 +699,7 @@ void CompassCalibrationCheck() {
         dirPassW = false;
         dirPassN = false;
         countRevolution +=1;
+        mydisp.print(".");
         //bleep(byte numBleeps, byte numTones, word bgnFreq, int stpFreq, byte milDelay)
         bleep(4, 20, 1000, 50, 1, false);
       }
@@ -716,11 +721,13 @@ void CompassCalibrationCheck() {
     bleep(1, 2, 3500, -2000, 10, false);
     pwm.setPWM(1, 0, posCenter);
     delay(500);
+    pwm.setPWM(1, 0, 240);
     setServo(240);
-    delay(500);
+    initstatusbar();
+    mydisp.print("Calibrating!");
     compass_debug = 1;
-    //compass_offset_calibration(3);
-    //SaveParameters();    //Save parameters after the calibration
+    compass_offset_calibration(3);
+    SaveParameters();    //Save parameters after the calibration
   }
   dirPassE = false;
   dirPassS = false;
@@ -786,9 +793,9 @@ void Maneuver() {
     setCMG2(targHeading, 100);
     cmgActive = false;
 
-    initstatusbar();
-    mydisp.print("Target:  ");
-    mydisp.print(targHeading);
+    //initstatusbar();
+    //mydisp.print("Tgt: ");
+    //mydisp.print(targHeading);
 
 
     double errHeading = abs(targHeading - bearing);
@@ -877,7 +884,7 @@ void Maneuver() {
       if (dwellTest < 1) {
         dwellTest = 1;
       }
-      bleep(1, 1, 500, -10, 5, false);                                        
+      //bleep(1, 1, 500, -10, 5, false);                                        
     }
 
   }
@@ -893,7 +900,6 @@ void setCMG2(double tgtYAW, uint16_t timeDomain) {
   float lastBearing = bearing;
   float adjTurnBrake;
   ReadCompass2();
-  turnRate = lastBearing - bearing;
 
   //http://www.inpharmix.com/jps/PID_Controller_For_Lego_Mindstorms_Robots.html
   //Truth Table - Direction And Result Calculation
@@ -922,7 +928,19 @@ void setCMG2(double tgtYAW, uint16_t timeDomain) {
 
   double errHeading = abs(tgtYAW - bearing);
 
-
+  turnRate = lastBearing - bearing;
+  if (turnRate > 60)
+  {
+    if (lastBearing > 270 && bearing < 90)
+    {
+      turnRate = (360 - lastBearing) + bearing;
+    }
+    else if (lastBearing < 90 && bearing > 270)
+    {
+      turnRate = (360 - bearing) + lastBearing;
+    }
+  }
+  turnRate = abs(turnRate);
 
 
   if (tgtYAW < bearing) {
@@ -932,6 +950,9 @@ void setCMG2(double tgtYAW, uint16_t timeDomain) {
   {
     valDirection = 1;
   }
+
+
+
 
   if (errHeading > 180) {
     //Motor must be spinning CCW
@@ -971,23 +992,40 @@ void setCMG2(double tgtYAW, uint16_t timeDomain) {
   }
 
 
-  //mydisp.drawStr(0, 0, "Heading:  "); //display string at: x=0, y=0
-  //mydisp.print(bearing); //display string at: x=0, y=0
-  //mydisp.drawStr(0, 1, "PID:  "); //display string at: x=0, y=0
-  //mydisp.print(u); //display string at: x=0, y=0
-  mydisp.drawStr(0, 1, "Rate:  "); //display string at: x=0, y=0
-  mydisp.print(turnRate); //display string at: x=0, y=0
-  //mydisp.drawStr(0, 2, "Rate:  "); //display string at: x=0, y=0
+  mydisp.setTextPosAbs(0,59);
+  mydisp.print("Srvo: ");
+  mydisp.print(posLast);
+  mydisp.print("   ");
+  //mydisp.setTextPosAbs(0,0);
+  mydisp.drawStr(0, 0, "H/D:   "); //display string at: x=0, y=0
+  mydisp.print((int) round(bearing)); //display string at: x=0, y=0
+  mydisp.print("/"); //display string at: x=0, y=0
+  mydisp.print((int) dwellCount); //display string at: x=0, y=0
+  mydisp.print("  "); //display string at: x=0, y=0
+  mydisp.drawStr(0, 1, "T/E: "); //display string at: x=0, y=0
+  mydisp.print((int) round(tgtYAW)); //display string at: x=0, y=0
+  mydisp.print("/"); //display string at: x=0, y=0
+  mydisp.print((int) round(errHeading)); //display string at: x=0, y=0
+  mydisp.print("  "); //display string at: x=0, y=0
+  mydisp.drawStr(0, 2, "R/Pd: "); //display string at: x=0, y=0
+  mydisp.print((int) turnRate); //display string at: x=0, y=0
+  mydisp.print("/"); //display string at: x=0, y=0
+  mydisp.print(u); //display string at: x=0, y=0
+  delay(50);
+
+
+  //mydisp.drawStr(0, 1, "Rate:  "); //display string at: x=0, y=0
   //mydisp.print(turnRate); //display string at: x=0, y=0
-  //mydisp.drawStr(0, 3, "Brake:  "); //display string at: x=0, y=0
+  //mydisp.drawStr(0, 3, "Bk:"); //display string at: x=0, y=0
   //mydisp.print(adjTurnBrake); //display string at: x=0, y=0
-  mydisp.drawStr(0, 2, "Bearing  "); //display string at: x=0, y=0
-  mydisp.print(bearing); //display string at: x=0, y=0
+  //mydisp.drawStr(0, 2, "Bearing  "); //display string at: x=0, y=0
+  //mydisp.print(bearing); //display string at: x=0, y=0
 
 
 
-
-  setServo(posLast + (u * valDirection) - adjTurnBrake);  
+  //if (turnRate < 15) {
+    setServo(posLast + (u * valDirection) - adjTurnBrake);
+  //}
 }
 
 
@@ -1091,15 +1129,22 @@ void runMotor(uint16_t setMOTOR) {
 //
 //
 //----------------------------------------------------------------
-void setServo(int sumPosition) {
+void setServo2(int sumPosition) {
   boolean reCenter = false;
 
 
-  if (sumPosition < posRight || sumPosition > posLeft) {
+  if (posLast < posRight || posLast > posLeft) {
     sumPosition = posCenter;
-    runMotor(MOTORSTART);
+    //runMotor(MOTORREADY);
+    //delay(1000);
     bleep(1, 2, 3500, -2000, 10, false);
-    reCenter = true;
+    runMotor(MOTORSTART);
+    posDelay = 15;
+    reCenter=true;
+  }
+  else
+  {
+    posDelay = 10;
   }
 
   if (sumPosition < posLast)
@@ -1107,7 +1152,8 @@ void setServo(int sumPosition) {
     for(pos = posLast; pos > sumPosition; pos -= 1)  // goes from 0 degrees to 180 degrees 
     {                                  // in steps of 1 degree 
       pwm.setPWM(1, 0, pos);
-      timerDelay(posDelay);                       // waits 15ms for the servo to reach the position 
+      //timerDelay(posDelay);                       // waits 15ms for the servo to reach the position 
+      delay(posDelay);
     } 
   }
   else
@@ -1115,19 +1161,34 @@ void setServo(int sumPosition) {
     for(pos = posLast; pos < sumPosition; pos += 1)  // goes from 0 degrees to 180 degrees 
     {                                  // in steps of 1 degree 
       pwm.setPWM(1, 0, pos);
-      timerDelay(posDelay);                       // waits 15ms for the servo to reach the position 
+      //timerDelay(posDelay);                       // waits 15ms for the servo to reach the position 
+      delay(posDelay);
     }
   }
   posLast = sumPosition;
   if (reCenter) {
-    runMotor(MOTORMAX);
+    runMotor(MOTORSTART);
+    runMotor(MOTORIDLE);
   }
 
 }
 
 
 
-
+void setServo(int sumPosition) {
+  
+  if (sumPosition >= posRight && sumPosition <= posLeft) {
+    if (sumPosition < posLast)
+    {
+      posLast -= ((posLast - sumPosition)/2);
+    }
+    else
+    {
+      posLast += ((sumPosition - posLast)/2);
+    }
+  }
+  pwm.setPWM(1, 0, posLast);
+}
 
 
 
@@ -1476,8 +1537,8 @@ void setTargetHeadingLED(double errHeading) {
   }
   
   
-  mydisp.drawStr(0, 0, "errHeadg:  "); //display string at: x=0, y=0
-  mydisp.print(errHeading); //display string at: x=0, y=0
+  //mydisp.drawStr(0, 0, "errHeadg:  "); //display string at: x=0, y=0
+  //mydisp.print(errHeading); //display string at: x=0, y=0
   //mydisp.drawStr(0, 2, "LED:  "); //display string at: x=0, y=0
   //mydisp.print(LEDOutput); //display string at: x=0, y=0
 
@@ -1650,7 +1711,7 @@ void bleep(byte numBleeps, byte numTones, word bgnFreq, int stpFreq, int milDela
     for (int i = 0; i < numTones; i++)
     {
       tone(speakerPin, (bgnFreq + (stpFreq*i)));
-      if (runTimer==true) tmr.update();
+      //if (runTimer==true) tmr.update();
       delay(milDelay);
     }
   }
@@ -1675,6 +1736,9 @@ void bleep(byte numBleeps, byte numTones, word bgnFreq, int stpFreq, int milDela
 //----------------------------------------------------------------
 void ReadCompass2(){
   float tempBearing = 0;
+  float tempRads;
+  float tempSin = 0;
+  float tempCos = 0;
   float minBearing = 0;
   float maxBearing = 0;
   compass_scalled_reading();
@@ -1695,17 +1759,43 @@ void ReadCompass2(){
 
   int numSamples = 20;    
   for(int i = 0; i < numSamples; i++) {
-    compass_scalled_reading();
+    //compass_scalled_reading();
     compass_heading();
     //tempBearing = tempBearing + bearing / numSamples;
-    tempBearing = tempBearing + bearing;
-
-    if (bearing > maxBearing)  maxBearing = bearing;
-    if (bearing < minBearing)  minBearing = bearing;
-    delay(3);
+    //tempBearing = tempBearing + bearing;
+    //if (bearing > 359) bearing = 0;
+    tempRads = bearing / 180.0 * PI;
+    //tempSin = tempSin + sin(tempRads);
+    //tempCos = tempCos + cos(tempRads);
+    // running average
+    tempCos = tempCos * .75 + cos(tempRads) * .25;
+    tempSin = tempSin * .75 + sin(tempRads) * .25;
+    //if (bearing > maxBearing)  maxBearing = bearing;
+    //if (bearing < minBearing)  minBearing = bearing;
+    delay(1);
   }
   //bearing = (tempBearing / numSamples);
-  tempBearing = (minBearing + maxBearing) / 2;
+  //if ((maxBearing - minBearing) > 270)
+  //{
+  //  tempBearing = ((360 - maxBearing) + minBearing) / 2;      
+  //}
+  //else
+  //{
+  //  tempBearing = (minBearing + maxBearing) / 2;  
+  //}
+
+  //tempSin = tempSin / numSamples;
+  //tempCos = tempCos / numSamples;
+  tempBearing = atan2(tempSin,tempCos) / PI * 180;
+  if(tempBearing < 0) tempBearing += 360;
+
+  
+  //You need to use modulo 360 arithmetic.
+  //Modulo 360 is simply the remainder after dividing the sum by 360. E.g.
+  //(10 + 10 + 10 + 350) / 4 = 95 (incorrect)
+  //((10 + 10 + 10 + 350) modulo 360) / 4 = 5 (correct)
+  //tempBearing = (((int) tempBearing) % 360)/ numSamples;
+  
   //Serial.print ("    Avg Heading angle = ");
   //Serial.println (bearing);
   bearing = tempBearing;
@@ -1757,6 +1847,7 @@ void SaveParameters()
 // ************************************************
 void LoadParameters()
 {
+  boolean runCal = false;
 
   Serial.println("Loading Compass Offsets");
 
@@ -1775,14 +1866,17 @@ void LoadParameters()
   if (isnan(compass_x_offset))
   {
     compass_x_offset = -413.98;
+    runCal = true;
   }
   if (isnan(compass_y_offset))
   {
     compass_y_offset = 549.80;
+    runCal = true;
   }
   if (isnan(compass_z_offset))
   {
     compass_z_offset = 83.99;
+    runCal = true;
   }  
 }
 
