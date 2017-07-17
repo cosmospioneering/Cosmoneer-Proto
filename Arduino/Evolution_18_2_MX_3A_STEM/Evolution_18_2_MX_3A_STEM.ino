@@ -175,16 +175,19 @@ const unsigned int MAX_INPUT = 50;
 // want these to be as small/large as possible without hitting the hard stop
 // for max range. You'll have to tweak them as necessary to match the servos you
 // have!
-#define SERVOMIN  120 // this is the 'minimum' pulse length count (out of 4096)
-#define SERVOMAX  460 // this is the 'maximum' pulse length count (out of 4096)
+//#define SERVOMIN  120 // this is the 'minimum' pulse length count (out of 4096)
+//#define SERVOMAX  460 // this is the 'maximum' pulse length count (out of 4096)
+#define SERVOMIN  140 // this is the 'minimum' pulse length count (out of 4096)
+#define SERVOMAX  430 // this is the 'maximum' pulse length count (out of 4096)
 double ServoOffset;  //Find the zero center of the servo offset.  We want the positional output to reflect turning...
 //
 //
 //Trying these settings with the Motor Controller
 const uint16_t MOTORZERO = 0; // this is the 'minimum' pulse length count (out of 4096)
 const uint16_t MOTORREADY = 200; // this is the 'minimum' pulse length count (out of 4096)
-const uint16_t MOTORSTART = 290; // was 275...  this is the 'minimum' pulse length count (out of 4096)
-const uint16_t MOTORIDLE = 300; // this is the 'minimum' pulse length count (out of 4096)
+const uint16_t MOTORSTART = 292; // was 275...  this is the 'minimum' pulse length count (out of 4096)
+//const uint16_t MOTORIDLE = 302; // this is the 'minimum' pulse length count (out of 4096)
+const uint16_t MOTORIDLE = 310; // this is the 'minimum' pulse length count (out of 4096)
 const uint16_t MOTORMAX = 320; // 250this is the 'maximum' pulse length count (out of 4096)
 // our servo # counter
 uint8_t servochannelnum = 1;
@@ -203,7 +206,7 @@ boolean dirPassE = false;
 boolean dirPassW = false;
 double baseFoundHeading = -1;   //This is the base station heading value...  -1 is the unassigned default
 const double searchHeadingIncrement = 30; // This is how much we will increment the search angle every XX seconds
-const uint16_t maxListensBeforeHeadingChange = 100; // 1/10th of a second for each maneuver... 1 second for each increment
+const uint16_t maxListensBeforeHeadingChange = 700; // 1/10th of a second for each maneuver... 1 second for each increment
 int8_t listenCount = 0;
 double findTargetHeading = 0;   //This is the base station heading value...  -1 is the unassigned default
 boolean findTarget = false;
@@ -219,8 +222,10 @@ const int motorlow = 200;    // variable to store the servo position
 int pos = 0;    // variable to store the servo position 
 int posLast = 280;    // variable to store the servo position 
 int posCenter = 280;    // variable to store the servo position 
-int posLeft = 460;    // variable to store the servo position 
-int posRight = 120;    // variable to store the servo position 
+//int posLeft = 450;    //  variable to store the servo position 
+//int posRight = 120;    // variable to store the servo position 
+int posLeft = 440;    // variable to store the servo position 
+int posRight = 130;    // variable to store the servo position 
 int posDelay = 10;
 
 
@@ -228,12 +233,15 @@ int posDelay = 10;
 
 
 //Cosmoneer PID settings
-#define propGAIN  .1 // .1 proportional gain (the bigger the number the harder the controller pushes)
-#define intGAIN  .07 // .05 integral gain  (the SMALLER the number (except for 0, which turns it off,)  the more quickly the controller reacts to load changes, but the greater the risk of oscillations.)
+//#define propGAIN  .1 // .1 proportional gain (the bigger the number the harder the controller pushes)
+#define propGAIN  .04 // .1 proportional gain (the bigger the number the harder the controller pushes)
+//#define intGAIN  .07 // .05 integral gain  (the SMALLER the number (except for 0, which turns it off,)  the more quickly the controller reacts to load changes, but the greater the risk of oscillations.)
+#define intGAIN  .2 // .05 integral gain  (the SMALLER the number (except for 0, which turns it off,)  the more quickly the controller reacts to load changes, but the greater the risk of oscillations.)
 float intgError;
 float lastError;
 float dervError;
-#define dervGAIN  3 // .5 derivative gain  (the bigger the number  the more the controller dampens oscillations (to the point where performance can be hindered))
+//#define dervGAIN  3 // .5 derivative gain  (the bigger the number  the more the controller dampens oscillations (to the point where performance can be hindered))
+#define dervGAIN  20 // .5 derivative gain  (the bigger the number the more the controller dampens oscillations (to the point where performance can be hindered))
 
 
 
@@ -246,6 +254,8 @@ float dervError;
 #define LCDCol 16
 #define LCDRow 4
 #define LCDW 128
+#define LCDMaxDelayCount 4
+int LCDDelayCount;
 
 
 
@@ -659,8 +669,8 @@ void CompassCalibrationCheck() {
 
 
 
-  initstatusbar();
-  mydisp.print("Testing");
+  //initstatusbar();
+  //mydisp.print("Testing");
   //delay(1000); 
   for(uint16_t steps = 0; steps<10; steps++)     // steps goes from 0 to 10 
   {                                
@@ -676,6 +686,12 @@ void CompassCalibrationCheck() {
 
       //Calculate the difference
       calHeadingDiff = bearing - calLastHeading;
+
+      initstatusbar();
+      mydisp.print("Testing: ");
+      mydisp.print((int) round(calLastHeading)); //display string at: x=0, y=0
+      mydisp.print("/"); //display string at: x=0, y=0
+      mydisp.print((int) round(bearing)); //display string at: x=0, y=0
 
       if (calLastHeading < 90 && bearing > 90 && dirPassE == false) {
         dirPassE = true;
@@ -726,7 +742,8 @@ void CompassCalibrationCheck() {
     initstatusbar();
     mydisp.print("Calibrating!");
     compass_debug = 1;
-    compass_offset_calibration(3);
+    //compass_offset_calibration(3);
+    compass_offset_calibration(2);
     SaveParameters();    //Save parameters after the calibration
   }
   dirPassE = false;
@@ -802,7 +819,7 @@ void Maneuver() {
 
     dwlTotalCount +=1;
     // are we within range?
-    if (errHeading > 0 && errHeading < 15) {
+    if (errHeading > 0 && errHeading < 10) {
       //increment the dwell counter
       dwellCount += 1;
 
@@ -814,7 +831,7 @@ void Maneuver() {
         return;
       }
 
-      dwellTest = 5;
+      dwellTest = 10 ;
       
       findTarget = false;
 
@@ -899,6 +916,8 @@ void setCMG2(double tgtYAW, uint16_t timeDomain) {
 
   float lastBearing = bearing;
   float adjTurnBrake;
+  float tempTurnRate=0;
+
   ReadCompass2();
 
   //http://www.inpharmix.com/jps/PID_Controller_For_Lego_Mindstorms_Robots.html
@@ -928,7 +947,11 @@ void setCMG2(double tgtYAW, uint16_t timeDomain) {
 
   double errHeading = abs(tgtYAW - bearing);
 
-  turnRate = lastBearing - bearing;
+  tempTurnRate = (float) (lastBearing - bearing);
+  //turnRate = turnRate * .25 + tempTurnRate * .75;
+  //turnRate = turnRate * .70 + tempTurnRate * .30;
+  turnRate = (turnRate * .50) + (tempTurnRate * .50);
+
   if (turnRate > 60)
   {
     if (lastBearing > 270 && bearing < 90)
@@ -972,17 +995,24 @@ void setCMG2(double tgtYAW, uint16_t timeDomain) {
     u = 1;
   }
 
-  if ((turnRate/200) > 1) {
-    adjTurnBrake = (u * 3);
-  }
-  else
-  {
-    adjTurnBrake = (u * 3) * (turnRate/200);
+  //if ((turnRate/2) > 1) {
+  //  adjTurnBrake = (u * 3);
+  //}
+  //else
+  //{
+  //  adjTurnBrake = (u * 3) * (turnRate);
+  //}
+  
+  
+  /*
+  if (turnRate > 0) {
+    adjTurnBrake = abs(u / turnRate);
   }
 
   if (errHeading < 30) {
     adjTurnBrake = 2;
   }
+  */
 
 
   //was....  && errHeading < 7
@@ -991,28 +1021,41 @@ void setCMG2(double tgtYAW, uint16_t timeDomain) {
     u = 0;
   }
 
-
-  mydisp.setTextPosAbs(0,59);
-  mydisp.print("Srvo: ");
-  mydisp.print(posLast);
-  mydisp.print("   ");
-  //mydisp.setTextPosAbs(0,0);
-  mydisp.drawStr(0, 0, "H/D:   "); //display string at: x=0, y=0
-  mydisp.print((int) round(bearing)); //display string at: x=0, y=0
-  mydisp.print("/"); //display string at: x=0, y=0
-  mydisp.print((int) dwellCount); //display string at: x=0, y=0
-  mydisp.print("  "); //display string at: x=0, y=0
-  mydisp.drawStr(0, 1, "T/E: "); //display string at: x=0, y=0
-  mydisp.print((int) round(tgtYAW)); //display string at: x=0, y=0
-  mydisp.print("/"); //display string at: x=0, y=0
-  mydisp.print((int) round(errHeading)); //display string at: x=0, y=0
-  mydisp.print("  "); //display string at: x=0, y=0
-  mydisp.drawStr(0, 2, "R/Pd: "); //display string at: x=0, y=0
-  mydisp.print((int) turnRate); //display string at: x=0, y=0
-  mydisp.print("/"); //display string at: x=0, y=0
-  mydisp.print(u); //display string at: x=0, y=0
-  delay(50);
-
+  //We have to limit how frequently we update the OLED display,
+  //since it can't keep up with our refresh rate
+  if (LCDDelayCount > LCDMaxDelayCount)
+  {
+    mydisp.setTextPosAbs(0,59);
+    mydisp.print("Srvo: ");
+    mydisp.print(posLast);
+    mydisp.print("/"); //display string at: x=0, y=0
+    mydisp.print((posLast + (u * valDirection) - adjTurnBrake));
+    mydisp.print("   ");
+    //mydisp.setTextPosAbs(0,0);
+    mydisp.drawStr(0, 0, "H/D/B: "); //display string at: x=0, y=0
+    mydisp.print((int) round(bearing)); //display string at: x=0, y=0
+    mydisp.print("/"); //display string at: x=0, y=0
+    mydisp.print((int) dwellCount); //display string at: x=0, y=0
+    mydisp.print("/"); //display string at: x=0, y=0
+    mydisp.print((int) adjTurnBrake); //display string at: x=0, y=0
+    mydisp.print("  "); //display string at: x=0, y=0
+    mydisp.drawStr(0, 1, "T/E: "); //display string at: x=0, y=0
+    mydisp.print((int) round(tgtYAW)); //display string at: x=0, y=0
+    mydisp.print("/"); //display string at: x=0, y=0
+    mydisp.print((int) round(errHeading)); //display string at: x=0, y=0
+    mydisp.print("  "); //display string at: x=0, y=0
+    mydisp.drawStr(0, 2, "R/Pd: "); //display string at: x=0, y=0
+    mydisp.print((int) turnRate); //display string at: x=0, y=0
+    //mydisp.print(turnRate); //display string at: x=0, y=0
+    mydisp.print("/"); //display string at: x=0, y=0
+    mydisp.print(u); //display string at: x=0, y=0
+    //delay(70);
+    LCDDelayCount=0;
+  }
+  else
+  {
+    LCDDelayCount+=1;
+  }
 
   //mydisp.drawStr(0, 1, "Rate:  "); //display string at: x=0, y=0
   //mydisp.print(turnRate); //display string at: x=0, y=0
@@ -1023,9 +1066,11 @@ void setCMG2(double tgtYAW, uint16_t timeDomain) {
 
 
 
-  //if (turnRate < 15) {
-    setServo(posLast + (u * valDirection) - adjTurnBrake);
-  //}
+  if ((((int) u) > 1) || (turnRate > 0)) {
+    //setServo(posLast + (u * valDirection) - adjTurnBrake);
+    //setServo3(posLast + (u * valDirection) - adjTurnBrake);
+    setServo3(posLast + (u * valDirection));
+  }
 }
 
 
@@ -1191,6 +1236,20 @@ void setServo(int sumPosition) {
 }
 
 
+void setServo3(int sumPosition) {
+  
+  if (sumPosition >= posRight && sumPosition <= posLeft) {
+    if (sumPosition < posLast)
+    {
+      posLast -= 1;
+    }
+    else
+    {
+      posLast += 1;
+    }
+  }
+  pwm.setPWM(1, 0, posLast);
+}
 
 
 
@@ -1529,11 +1588,14 @@ void setTargetHeadingLED(double errHeading) {
 
 
   //Fourth quadrants left and right of the front center
-  if (errHeading >= 90 && errHeading <= 180) {
+  if (errHeading >= 90 && errHeading < 135) {
     LEDOutput = B10000000;
   }
-  if (errHeading >= -180 && errHeading <= -90) {
+  if (errHeading > -135 && errHeading <= -90) {
     LEDOutput = B00000001;
+  }
+  if (errHeading <= -135 || errHeading >= 135) {
+    LEDOutput = B10000001;
   }
   
   
@@ -1827,17 +1889,20 @@ void ReadCompass2(){
 // ************************************************
 void SaveParameters()
 {
+  int sizeEEPROM;
+  bleep(1, 10, 3500, -300, 3, false);
+
   if (compass_x_offset != EEPROM_readFloat(CompassXOffsetAddress))
   {
-    EEPROM_writeFloat(CompassXOffsetAddress, compass_x_offset);
+    sizeEEPROM = EEPROM_writeFloat(CompassXOffsetAddress, compass_x_offset);
   }
   if (compass_y_offset != EEPROM_readFloat(CompassYOffsetAddress))
   {
-    EEPROM_writeFloat(CompassYOffsetAddress, compass_y_offset);
+    sizeEEPROM = EEPROM_writeFloat(CompassYOffsetAddress, compass_y_offset);
   }
   if (compass_z_offset != EEPROM_readFloat(CompassZOffsetAddress))
   {
-    EEPROM_writeFloat(CompassZOffsetAddress, compass_z_offset);
+    sizeEEPROM = EEPROM_writeFloat(CompassZOffsetAddress, compass_z_offset);
   }
 }
 
@@ -1884,13 +1949,24 @@ void LoadParameters()
 // ************************************************
 // Write floating point values to EEPROM
 // ************************************************
-void EEPROM_writeFloat(int address, float value)
+int EEPROM_writeFloat(int address, float value)
 {
+int i;
+
   byte* p = (byte*)(void*)&value;
-  for (int i = 0; i < sizeof(value); i++)
+  for (i = 0; i < sizeof(value); i++)
   {
     EEPROM.write(address++, *p++);
   }
+  initstatusbar();
+  //mydisp.print("");
+  mydisp.print(address); //display string at: x=0, y=0
+  mydisp.print("/"); //display string at: x=0, y=0
+  mydisp.print(i); //display string at: x=0, y=0
+  mydisp.print(":"); //display string at: x=0, y=0
+  mydisp.print(value); //display string at: x=0, y=0
+  delay(5000);
+  return i;
 }
 // ************************************************
 // Read floating point values from EEPROM
@@ -1903,6 +1979,14 @@ float EEPROM_readFloat(int address)
   {
     *p++ = EEPROM.read(address++);
   }
+
+  initstatusbar();
+  //mydisp.print("");
+  mydisp.print(address); //display string at: x=0, y=0
+  mydisp.print(":"); //display string at: x=0, y=0
+  mydisp.print(value); //display string at: x=0, y=0
+  delay(1000);
+  
   return value;
 }
 
